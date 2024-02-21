@@ -1,3 +1,5 @@
+import pytest
+
 from utils import print_5_executed_operations
 import os
 
@@ -16,8 +18,14 @@ def test_make_path():
 
 
 def test_reading_file():
-    ...
+    with open('for_course_3.json', 'rt', encoding='utf-8') as file:
+        test_raw_json = file.read()
+    assert print_5_executed_operations.reading_file('for_course_3.json') == test_raw_json
 
+
+def test_reading_file__file_not_found():
+    with pytest.raises(FileNotFoundError):
+        print_5_executed_operations.reading_file('operations')
 
 
 def test_reading():
