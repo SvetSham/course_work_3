@@ -6,6 +6,10 @@ def prepare_data():
     ...
 
 
+def printing_data():
+    ...
+
+
 def main():
     ...
 
