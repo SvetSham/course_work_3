@@ -47,12 +47,27 @@ def get_from_num(card_from: str) -> str:
     return card_list[-1]
 
 
+def get_from_name(card_from: str) -> str:
+    card_list = card_from.split(' ')
+    card_name_list = card_list[0: -1]
+    card_name = ' '.join(card_name_list)
+    return card_name
+
+
 def printing_data(five_executed):
     for i in range(len(five_executed)):
         data = reading_data(five_executed[i]["date"])
         description = five_executed[i]["description"]
+        if 'from' in list(five_executed[i]):
+            card_from_num = get_from_num(five_executed[i]["from"])
+
+            card_from_name = get_from_name(five_executed[i]["from"])
+        else:
+            card_from_num = '???'
+            card_from_name = '???'
 
         print(data, description)
+        print(card_from_name)
         print()
     return True
 
