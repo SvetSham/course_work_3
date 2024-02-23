@@ -54,20 +54,37 @@ def get_from_name(card_from: str) -> str:
     return card_name
 
 
+def mask_card_num(card_from_num: str) -> str:
+    if card_from_num != "":
+        masked_card_num = list(card_from_num)
+
+        for i in range(6,len(card_from_num)-4):
+            masked_card_num[i] = '*'
+
+        for i in range(4, len(card_from_num), 5):
+            masked_card_num.insert(i, ' ')
+
+        masked_card_num = ''.join(masked_card_num)
+
+        return masked_card_num
+    else:
+        return ""
+
+
 def printing_data(five_executed):
     for i in range(len(five_executed)):
         data = reading_data(five_executed[i]["date"])
         description = five_executed[i]["description"]
         if 'from' in list(five_executed[i]):
             card_from_num = get_from_num(five_executed[i]["from"])
-
+            card_from_num = mask_card_num(card_from_num)
             card_from_name = get_from_name(five_executed[i]["from"])
         else:
             card_from_num = '???'
             card_from_name = '???'
 
         print(data, description)
-        print(card_from_name)
+        print(card_from_name, card_from_num, '->')
         print()
     return True
 
