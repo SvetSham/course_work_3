@@ -80,16 +80,11 @@ LIST3_TASK = []
 LIST3_ANSWER = []
 
 
-def make_path_for_test(file_name):
-    if os.name == 'nt':
-        path = '..\\data\\' + file_name
-    else:
-        path = '../data/' + file_name
-    return path
-
-
 def test_make_path():
-    path = make_path_for_test(OPERATIONS_FILE_NAME)
+    if os.name == 'nt':
+        path = '..\\data\\' + OPERATIONS_FILE_NAME
+    else:
+        path = '../data/' + OPERATIONS_FILE_NAME
     assert print_5_executed_operations.make_path(OPERATIONS_FILE_NAME) == path
 
 
