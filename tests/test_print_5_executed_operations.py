@@ -1,7 +1,27 @@
 import pytest
-
 from utils import print_5_executed_operations
 import os
+
+
+@pytest.fixture
+def operations_list_of_dict_fixture():
+    return [
+        {
+            "id": 441945886,
+            "state": "EXECUTED",
+            "date": "2019-08-26T10:50:58.294041",
+            "operationAmount": {
+                "amount": "31957.58",
+                "currency": {
+                    "name": "руб.",
+                    "code": "RUB"
+                }
+            },
+            "description": "Перевод организации",
+            "from": "Maestro 1596837868705199",
+            "to": "Счет 64686473678894779589"
+        }
+    ]
 
 
 def make_path_for_test(file_name):
@@ -30,6 +50,7 @@ def test_reading_file__file_not_found():
 
 def test_making_dict_from_json():
     ...
+
 
 def test_prepare_data():
     ...
