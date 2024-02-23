@@ -28,6 +28,9 @@ def test_reading_file__file_not_found():
         print_5_executed_operations.reading_file('operations')
 
 
+def test_making_dict_from_json():
+    ...
+
 def test_prepare_data():
     ...
 
