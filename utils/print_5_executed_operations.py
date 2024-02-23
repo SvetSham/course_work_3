@@ -43,7 +43,10 @@ def reading_data(operation_datetime: str) -> str:
 
 
 def printing_data(five_executed):
-    data = reading_data(five_executed[0]["date"])
+    for i in range(len(five_executed)):
+        data = reading_data(five_executed[i]["date"])
+        description = five_executed[i]["description"]
+        print(data, description)
     return True
 
 
