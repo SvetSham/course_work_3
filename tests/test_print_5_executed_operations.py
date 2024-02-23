@@ -44,6 +44,42 @@ def operations_list_fixture():
     ]
 
 
+LIST1_TASK = [
+        {'num': 0, 'state': 'EXECUTED'},
+        {'num': 1, 'state': 'EXECUTED'},
+        {'num': 2, 'state': 'CANCELED'},
+        {'num': 3, 'state': 'EXECUTED'},
+        {'num': 4, 'state': 'EXECUTED'},
+        {'num': 5, 'state': 'EXECUTED'}
+    ]
+
+LIST1_ANSWER = [
+        {'num': 0, 'state': 'EXECUTED'},
+        {'num': 1, 'state': 'EXECUTED'},
+        {'num': 3, 'state': 'EXECUTED'},
+        {'num': 4, 'state': 'EXECUTED'},
+        {'num': 5, 'state': 'EXECUTED'}
+    ]
+
+LIST2_TASK = [
+        {'num': 0, 'state': 'CANCELED'},
+        {'num': 1, 'state': 'CANCELED'},
+        {'num': 2, 'state': 'CANCELED'},
+        {'num': 3, 'state': 'EXECUTED'},
+        {'num': 4, 'state': 'EXECUTED'},
+        {'num': 5, 'state': 'EXECUTED'}
+    ]
+
+LIST2_ANSWER = [
+        {'num': 3, 'state': 'EXECUTED'},
+        {'num': 4, 'state': 'EXECUTED'},
+        {'num': 5, 'state': 'EXECUTED'}
+    ]
+
+LIST3_TASK = []
+LIST3_ANSWER = []
+
+
 def make_path_for_test(file_name):
     if os.name == 'nt':
         path = '..\\data\\' + file_name
@@ -71,7 +107,10 @@ def test_making_list_from_json(operations_list_fixture):
 
 
 def test_prepare_data():
-    ...
+    assert print_5_executed_operations.prepare_data(LIST1_TASK) == LIST1_ANSWER
+    assert print_5_executed_operations.prepare_data(LIST2_TASK) == LIST2_ANSWER
+    assert print_5_executed_operations.prepare_data(LIST3_TASK) == LIST3_ANSWER
+
 
 
 def test_printing_data():
