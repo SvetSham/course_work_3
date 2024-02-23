@@ -1,4 +1,5 @@
 import os
+import json
 
 
 def make_path(filename):
@@ -12,8 +13,9 @@ def reading_file(path):
     return raw_operations
 
 
-def making_dict_from_json(raw_operations):
-    ...
+def making_list_from_json(raw_operations):
+    operations = json.loads(raw_operations)
+    return operations
 
 
 def reading_operations_file(filename):
