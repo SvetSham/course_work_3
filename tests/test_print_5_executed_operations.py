@@ -1,5 +1,5 @@
 import pytest
-from utils import print_5_executed_operations
+from src import print_5_executed_operations
 import os
 
 OPERATIONS_FILE_NAME = 'operations.json'
