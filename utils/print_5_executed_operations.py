@@ -21,6 +21,7 @@ def making_list_from_json(raw_operations):
 def reading_operations_file(filename):
     path = make_path(filename)
     raw_operations = reading_file(path)
+    operations = making_list_from_json(raw_operations)
 
 
 def prepare_data():
