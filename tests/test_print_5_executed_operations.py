@@ -129,6 +129,12 @@ def test_get_from_name():
     assert print_5_executed_operations.get_from_name("") == ""
 
 
+def test_mask_card_num():
+    assert print_5_executed_operations.mask_card_num("48894435694657014368") == "4889 44** **** **** 4368"
+    assert print_5_executed_operations.mask_card_num("6831982476737658") == "6831 98** **** 7658"
+    assert print_5_executed_operations.mask_card_num("") == ""
+
+
 def test_printing_data():
     ...
 
