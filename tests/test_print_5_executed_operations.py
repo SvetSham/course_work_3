@@ -56,9 +56,7 @@ def test_make_path():
 
 
 def test_reading_file():
-    with open('for_course_3.json', 'rt', encoding='utf-8') as file:
-        test_raw_json = file.read()
-    assert print_5_executed_operations.reading_file('for_course_3.json') == test_raw_json
+    assert print_5_executed_operations.reading_file('for_course_3.json') == TEXT_OPERATIONS
 
 
 def test_reading_file__file_not_found():
