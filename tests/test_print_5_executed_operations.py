@@ -113,7 +113,9 @@ def test_prepare_data():
 
 
 def test_reading_data():
-    ...
+    assert print_5_executed_operations.reading_data("2019-08-26T10:50:58.294041") == "26.08.2019"
+    assert print_5_executed_operations.reading_data("") == ""
+
 
 def test_printing_data():
     ...
