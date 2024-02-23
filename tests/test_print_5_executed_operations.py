@@ -117,6 +117,11 @@ def test_reading_data():
     assert print_5_executed_operations.reading_data("") == ""
 
 
+def test_get_from_num():
+    assert print_5_executed_operations.get_from_num("Счет 48894435694657014368") == '48894435694657014368'
+    assert print_5_executed_operations.get_from_num("Visa Classic 6831982476737658") == '6831982476737658'
+    assert print_5_executed_operations.get_from_num("") == ''
+
 def test_printing_data():
     ...
 
