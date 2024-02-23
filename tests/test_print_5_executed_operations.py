@@ -2,6 +2,8 @@ import pytest
 from utils import print_5_executed_operations
 import os
 
+OPERATIONS_FILE_NAME = 'operations.json'
+
 TEXT_OPERATIONS = """[
   {
     "id": 441945886,
@@ -51,8 +53,8 @@ def make_path_for_test(file_name):
 
 
 def test_make_path():
-    path = make_path_for_test('operations.json')
-    assert print_5_executed_operations.make_path('operations.json') == path
+    path = make_path_for_test(OPERATIONS_FILE_NAME)
+    assert print_5_executed_operations.make_path(OPERATIONS_FILE_NAME) == path
 
 
 def test_reading_file():
