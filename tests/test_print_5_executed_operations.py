@@ -135,10 +135,3 @@ def test_mask_account_num():
     assert print_5_executed_operations.mask_account_num('8990922113665229') == "**5229"
     assert print_5_executed_operations.mask_account_num('') == ""
 
-
-def test_printing_data():
-    ...
-
-
-def test_main():
-    ...
