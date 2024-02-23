@@ -39,6 +39,7 @@ def main():
     path = make_path('operations.json')
     raw_operations = reading_file(path)
     operations = making_list_from_json(raw_operations)
-    prepare_data(operations)
+    five_executed = prepare_data(operations)
+
 
 main()
