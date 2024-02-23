@@ -34,8 +34,12 @@ def prepare_data(operations):
 
 def reading_data(operation_datetime: str) -> str:
     """Transformation datetime to date in mask dd.mm.yyyy"""
-
-    return operation_date
+    if operation_datetime != '':
+        full_datetime = datetime.datetime.strptime(operation_datetime, '%Y-%m-%dT%H:%M:%S.%f')
+        operation_date = full_datetime.strftime('%d.%m.%Y')
+        return operation_date
+    else:
+        return ''
 
 
 def printing_data(five_executed):
