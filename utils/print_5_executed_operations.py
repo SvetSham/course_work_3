@@ -72,8 +72,11 @@ def mask_card_num(card_from_num: str) -> str:
 
 
 def mask_account_num(account_to_num):
-    masked_account_num = '**' + account_to_num[-4:]
-    return masked_account_num
+    if account_to_num != '':
+        masked_account_num = '**' + account_to_num[-4:]
+        return masked_account_num
+    else:
+        return ''
 
 
 def printing_data(five_executed):
