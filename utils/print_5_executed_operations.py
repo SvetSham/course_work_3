@@ -18,13 +18,6 @@ def making_list_from_json(raw_operations):
     return operations
 
 
-def reading_operations_file(filename):
-    path = make_path(filename)
-    raw_operations = reading_file(path)
-    operations = making_list_from_json(raw_operations)
-    prepare_data(operations)
-
-
 def prepare_data(operations):
     five_executed = []
     i = 0
@@ -43,7 +36,9 @@ def printing_data():
 
 
 def main():
-    reading_operations_file('operations.json')
-
+    path = make_path('operations.json')
+    raw_operations = reading_file(path)
+    operations = making_list_from_json(raw_operations)
+    prepare_data(operations)
 
 main()
