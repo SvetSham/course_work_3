@@ -24,7 +24,7 @@ TEXT_OPERATIONS = """[
 
 
 @pytest.fixture
-def operations_list_of_dict_fixture():
+def operations_list_fixture():
     return [
         {
             "id": 441945886,
@@ -66,8 +66,8 @@ def test_reading_file__file_not_found():
         print_5_executed_operations.reading_file('operations')
 
 
-def test_making_dict_from_json():
-    ...
+def test_making_list_from_json(operations_list_fixture):
+    assert print_5_executed_operations.making_list_from_json(TEXT_OPERATIONS) == operations_list_fixture
 
 
 def test_prepare_data():
