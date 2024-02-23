@@ -42,11 +42,18 @@ def reading_data(operation_datetime: str) -> str:
         return ''
 
 
+def get_from_num(card_from: str) -> str:
+    card_list = card_from.split(' ')
+    return card_list[-1]
+
+
 def printing_data(five_executed):
     for i in range(len(five_executed)):
         data = reading_data(five_executed[i]["date"])
         description = five_executed[i]["description"]
+
         print(data, description)
+        print()
     return True
 
 
