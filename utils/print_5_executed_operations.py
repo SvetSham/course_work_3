@@ -71,6 +71,11 @@ def mask_card_num(card_from_num: str) -> str:
         return ""
 
 
+def mask_account_num(account_to_num):
+    masked_account_num = '**' + account_to_num[-4:]
+    return masked_account_num
+
+
 def printing_data(five_executed):
     for i in range(len(five_executed)):
         data = reading_data(five_executed[i]["date"])
@@ -84,9 +89,11 @@ def printing_data(five_executed):
             card_from_name = '???'
         account_to_name = get_from_name(five_executed[i]["to"])
         account_to_num = get_from_num(five_executed[i]["to"])
+        account_to_num = mask_account_num(account_to_num)
 
         print(data, description)
-        print(card_from_name, card_from_num, '->')
+        print(card_from_name, card_from_num, '->', account_to_name, account_to_num)
+
         print()
     return True
 
