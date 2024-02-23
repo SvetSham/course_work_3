@@ -112,6 +112,8 @@ def test_prepare_data():
     assert print_5_executed_operations.prepare_data(LIST3_TASK) == LIST3_ANSWER
 
 
+def test_reading_data():
+    ...
 
 def test_printing_data():
     ...

@@ -1,5 +1,6 @@
 import os
 import json
+import datetime
 
 
 def make_path(filename):
@@ -31,8 +32,15 @@ def prepare_data(operations):
     return five_executed
 
 
-def printing_data():
-    ...
+def reading_data(operation_datetime: str) -> str:
+    """Transformation datetime to date in mask dd.mm.yyyy"""
+
+    return operation_date
+
+
+def printing_data(five_executed):
+    data = reading_data(five_executed[0]["date"])
+    return True
 
 
 def main():
@@ -40,6 +48,7 @@ def main():
     raw_operations = reading_file(path)
     operations = making_list_from_json(raw_operations)
     five_executed = prepare_data(operations)
+    printed = printing_data(five_executed)
 
 
 main()
