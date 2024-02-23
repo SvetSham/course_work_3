@@ -122,6 +122,13 @@ def test_get_from_num():
     assert print_5_executed_operations.get_from_num("Visa Classic 6831982476737658") == '6831982476737658'
     assert print_5_executed_operations.get_from_num("") == ''
 
+
+def test_get_from_name():
+    assert print_5_executed_operations.get_from_name("Счет 48894435694657014368") == "Счет"
+    assert print_5_executed_operations.get_from_name("Visa Classic 6831982476737658") == "Visa Classic"
+    assert print_5_executed_operations.get_from_name("") == ""
+
+
 def test_printing_data():
     ...
 
