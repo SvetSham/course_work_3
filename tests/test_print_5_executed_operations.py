@@ -4,7 +4,7 @@ from utils import print_5_executed_operations
 import os
 
 
-def make_path(file_name):
+def make_path_for_test(file_name):
     if os.name == 'nt':
         path = '..\\data\\' + file_name
     else:
@@ -13,7 +13,7 @@ def make_path(file_name):
 
 
 def test_make_path():
-    path = make_path('operations.json')
+    path = make_path_for_test('operations.json')
     assert print_5_executed_operations.make_path('operations.json') == path
 
 
