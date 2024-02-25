@@ -1,6 +1,7 @@
 import pytest
 from src import print_5_executed_operations
 import os
+import datetime
 
 OPERATIONS_FILE_NAME = 'operations.json'
 
@@ -79,6 +80,100 @@ LIST2_ANSWER = [
 LIST3_TASK = []
 LIST3_ANSWER = []
 
+LIST_DATE_TASK = [
+  {
+    "id": 441945886,
+    "state": "EXECUTED",
+    "date": "2019-08-26T10:50:58.294041",
+    "operationAmount": {
+      "amount": "31957.58",
+      "currency": {
+        "name": "руб.",
+        "code": "RUB"
+      }
+    },
+    "description": "Перевод организации",
+    "from": "Maestro 1596837868705199",
+    "to": "Счет 64686473678894779589"
+  },
+  {
+    "id": 939719570,
+    "state": "EXECUTED",
+    "date": "2018-06-30T02:08:58.425572",
+    "operationAmount": {
+      "amount": "9824.07",
+      "currency": {
+        "name": "USD",
+        "code": "USD"
+      }
+    },
+    "description": "Перевод организации",
+    "from": "Счет 75106830613657916952",
+    "to": "Счет 11776614605963066702"
+  },
+  {
+    "id": 108066781,
+    "state": "EXECUTED",
+    "date": "2019-06-21T12:34:06.351022",
+    "operationAmount": {
+      "amount": "25762.92",
+      "currency": {
+        "name": "руб.",
+        "code": "RUB"
+      }
+    },
+    "description": "Открытие вклада",
+    "to": "Счет 90817634362091276762"
+  }
+]
+
+LIST_DATE_ANSWER = [
+  {
+    "id": 441945886,
+    "state": "EXECUTED",
+    "date": datetime.datetime(2019, 8, 26, 10, 50, 58, 294041),
+    "operationAmount": {
+      "amount": "31957.58",
+      "currency": {
+        "name": "руб.",
+        "code": "RUB"
+      }
+    },
+    "description": "Перевод организации",
+    "from": "Maestro 1596837868705199",
+    "to": "Счет 64686473678894779589"
+  },
+  {
+    "id": 108066781,
+    "state": "EXECUTED",
+    "date": datetime.datetime(2019, 6, 21, 12, 34, 6, 351022),
+    "operationAmount": {
+      "amount": "25762.92",
+      "currency": {
+        "name": "руб.",
+        "code": "RUB"
+      }
+    },
+    "description": "Открытие вклада",
+    "to": "Счет 90817634362091276762"
+  },
+  {
+    "id": 939719570,
+    "state": "EXECUTED",
+    "date": datetime.datetime(2018, 6, 30, 2, 8, 58, 425572),
+    "operationAmount": {
+      "amount": "9824.07",
+      "currency": {
+        "name": "USD",
+        "code": "USD"
+      }
+    },
+    "description": "Перевод организации",
+    "from": "Счет 75106830613657916952",
+    "to": "Счет 11776614605963066702"
+  }
+]
+
 
 def test_make_path():
     if os.name == 'nt':
@@ -108,7 +203,7 @@ def test_prepare_data():
 
 
 def test_reading_data():
-    assert print_5_executed_operations.reading_data("2019-08-26T10:50:58.294041") == "26.08.2019"
+    assert print_5_executed_operations.reading_data(datetime.datetime(2019, 8, 26, 10, 50, 58, 294041)) == "26.08.2019"
     assert print_5_executed_operations.reading_data("") == ""
 
 
@@ -135,3 +230,6 @@ def test_mask_account_num():
     assert print_5_executed_operations.mask_account_num('8990922113665229') == "**5229"
     assert print_5_executed_operations.mask_account_num('') == ""
 
+
+def test_making_date_operations_datetime_obj():
+    assert print_5_executed_operations.making_date_operations_datetime_obj(LIST_DATE_TASK) == LIST_DATE_ANSWER
