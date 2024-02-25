@@ -20,6 +20,7 @@ def making_list_from_json(raw_operations):
 
 
 def making_date_operations_datetime_obj(operations):
+    """Making dates of operation datetime objects and sorting by date from new to old"""
     new_operations = []
     for i in range(len(operations)):
         if 'date' in list(operations[i]):
