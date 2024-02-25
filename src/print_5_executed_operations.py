@@ -88,8 +88,8 @@ def printing_data(five_executed):
             card_from_num = mask_card_num(card_from_num)
             card_from_name = get_from_name(five_executed[i]["from"])
         else:
-            card_from_num = '???'
-            card_from_name = '???'
+            card_from_num = ''
+            card_from_name = ''
         account_to_name = get_from_name(five_executed[i]["to"])
         account_to_num = get_from_num(five_executed[i]["to"])
         account_to_num = mask_account_num(account_to_num)
