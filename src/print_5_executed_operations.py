@@ -19,6 +19,17 @@ def making_list_from_json(raw_operations):
     return operations
 
 
+def making_date_operations_datetime_obj(operations):
+    new_operations = []
+    for i in range(len(operations)):
+        if 'date' in list(operations[i]):
+            operation_datetime = operations[i]['date']
+            operations[i]['date'] = datetime.datetime.strptime(operation_datetime, '%Y-%m-%dT%H:%M:%S.%f')
+            new_operations.append(operations[i])
+    operations = sorted(new_operations, key=lambda item: item['date'], reverse=True)
+    return operations
+
+
 def prepare_data(operations):
     five_executed = []
     i = 0
@@ -32,11 +43,10 @@ def prepare_data(operations):
     return five_executed
 
 
-def reading_data(operation_datetime: str) -> str:
+def reading_data(operation_datetime: datetime) -> str:
     """Transformation datetime to date in mask dd.mm.yyyy"""
     if operation_datetime != '':
-        full_datetime = datetime.datetime.strptime(operation_datetime, '%Y-%m-%dT%H:%M:%S.%f')
-        operation_date = full_datetime.strftime('%d.%m.%Y')
+        operation_date = operation_datetime.strftime('%d.%m.%Y')
         return operation_date
     else:
         return ''
@@ -107,7 +117,8 @@ def main():
     path = make_path('operations.json')
     raw_operations = reading_file(path)
     operations = making_list_from_json(raw_operations)
-    five_executed = prepare_data(operations)
+    operations_with_date = making_date_operations_datetime_obj(operations)
+    five_executed = prepare_data(operations_with_date)
     printed = printing_data(five_executed)
 
 
